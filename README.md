@@ -1,2 +1,2 @@
 # taus-qe
-Quality Estimation Using Distributed Representations of Words and Sentences
+Linear Mapping between two monolingual vector spaces using the Least Squares or Orthogonal Procrustes methods
