@@ -18,7 +18,6 @@ class SentencePair:
         self.mapped_vector = mapped_vector
         pass
     
-    
     def add_gold_vector(self, gold_vector):
         self.gold_vector = gold_vector
         pass
