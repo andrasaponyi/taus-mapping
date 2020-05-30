@@ -58,7 +58,7 @@ def write_pairs_to_file(pairs, scores):
         
     with open("data/results.csv", "w") as csvfile:
         writer = csv.writer(csvfile, delimiter=",")
-        # writer.writerow(["Source", "Target", "SemScore"])
+        writer.writerow(["Source", "Target", "SemScore"])
         for pair in pairs:
             row = [pair.source, pair.target, pair.score]
             writer.writerow(row)
