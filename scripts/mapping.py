@@ -70,10 +70,10 @@ def find_translation_matrix(model_source, model_target, seed_dictionary, method)
 def main(method):
     
     # load models trained using gensim implementation of word2vec
-    # model_source = "vectors/source_vectors.bin"
-    # model_target = "vectors/target_vectors.bin"
-    model_source = "vectors/taus_en_300.bin"
-    model_target = "vectors/taus_fr_300.bin"
+    model_source = "vectors/source_vectors.bin"
+    model_target = "vectors/target_vectors.bin"
+    # model_source = "vectors/taus_en_300.bin"
+    # model_target = "vectors/taus_fr_300.bin"
     model_source = KeyedVectors.load_word2vec_format(model_source, binary=True)
     model_target = KeyedVectors.load_word2vec_format(model_target, binary=True)
 
