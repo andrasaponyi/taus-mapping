@@ -8,4 +8,3 @@ vectors/taus_fr_300.bin
 # Ignore data files 
 data/pairs.json
 data/results.csv
-data/transformation_matrix.csv
