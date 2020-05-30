@@ -4,6 +4,10 @@
 Created on Mon Apr 20 10:51:00 2020
 
 @author: andrasaponyi
+
+Obtain a linear or orthogonal transformation between two monolingual vectors spaces.
+Creates file "transformation_matrix.csv" in "data" directory.
+Run from main directory (taus-mapping)!
 """
 
 import numpy as np
@@ -17,7 +21,8 @@ def seed_to_lists(model_source, model_target, seed_dict):
     """
     Remove words from the seed dictionary that are missing from either model 
     Return source and target words as separate lists.
-    This returns a dictionary that is considerably shorter than the original.
+    This returns a dictionary that is considerably shorter than the original, bvt
+    out-of-vocabulary words are treated.
     """
     
     source_words = list()
@@ -62,13 +67,18 @@ def find_translation_matrix(model_source, model_target, seed_dictionary, method)
     
     return translation_matrix
 
-def main(model_source, model_target, seed_dictionary_file, outfile, method):
+def main(method):
     
     # load models trained using gensim implementation of word2vec
+    # model_source = "vectors/source_vectors.bin"
+    # model_target = "vectors/target_vectors.bin"
+    model_source = "vectors/taus_en_300.bin"
+    model_target = "vectors/taus_fr_300.bin"
     model_source = KeyedVectors.load_word2vec_format(model_source, binary=True)
     model_target = KeyedVectors.load_word2vec_format(model_target, binary=True)
 
     # list of word pairs to train translation matrix as json
+    seed_dictionary_file = "data/seed_dictionary.json"
     with open(seed_dictionary_file, "r") as json_file:
         seed_dictionary = json.load(json_file)
         
@@ -76,14 +86,10 @@ def main(model_source, model_target, seed_dictionary_file, outfile, method):
     translation_matrix = find_translation_matrix(model_source, model_target, seed_dictionary, method)
     
     # Save learned translaton matrix to file.
-    np.savetxt(outfile, translation_matrix, delimiter=",")
+    np.savetxt("data/transformation_matrix.csv", translation_matrix, delimiter=",")
     
 if __name__ == "__main__":
-    
-    parser.add_argument("-src", "--model_source")
-    parser.add_argument("-trg", "--model_target")
-    parser.add_argument("-seed", "--seed")
-    parser.add_argument("-out", "--outfile")
+        
     parser.add_argument("-mtd", "--method")
     args = parser.parse_args()
-    main(args.model_source, args.model_target, args.seed, args.outfile, args.method)    
+    main(args.method)    
