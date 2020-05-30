@@ -5,8 +5,7 @@ Created on Sat May 30 10:51:22 2020
 
 @author: andrasaponyi
 """
-
-
+    
 class SentencePair:
     """ Data object for storing information about source-target sentence pairs. """
     
@@ -33,8 +32,8 @@ class SentencePair:
         pair_dict = {
             "source": self.source,
             "target": self.target,
-            "mapped_vector": len(self.mapped_vector),
-            "gold_vector": len(self.gold_vector),
+            "mapped_vector": self.mapped_vector,
+            "gold_vector": self.gold_vector,
             "score": self.score
             }
     
