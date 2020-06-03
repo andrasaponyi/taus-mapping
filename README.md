@@ -13,7 +13,7 @@ From the parent directory, run semscore.py, which takes the following arguments:
 Required files:
 	
 	-data/pairs.json: file containing source and target sentences, follow the example in data/sample_pairs.json
-	-data/seed_dictionary.json: a high-quality seed dictionary for learning the transformation matrix
+	-data/seed_dictionary.json: a high-quality seed dictionary for learning the transformation matrix (current one is a sample, make your own for better results)
 	-vectors/source_vectors.bin: source language word embeddings, word2vec format
 	-vectors/target_vectors.bin: target language word embeddings, word2vec format
 		
@@ -32,3 +32,7 @@ Read more about the transformation methods here:
 
 	-https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html
 	-https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.linalg.orthogonal_procrustes.html
+	
+Seed dictionary obtained from:
+
+	-https://www.easypacelearning.com/all-lessons/english-books-for-download-pdfs-free/1346-english-french-dictionary-pdf-free
