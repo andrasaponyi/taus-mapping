@@ -9,3 +9,4 @@ vectors/taus_fr_300.bin
 data/pairs.json
 data/results.csv
 data/transformation_matrix.csv
+data/seed_dictionary_refined.json
