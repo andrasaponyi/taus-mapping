@@ -15,8 +15,7 @@ from gensim.models import KeyedVectors
 import spacy
 from sklearn.metrics.pairwise import cosine_similarity
 from utils import shuffle_and_slice, tokenize
-import pandas as pd
-from utils import write_pairs_to_file, pairs_from_df
+from utils import write_results, pairs_from_df
 from classes import SentencePair
 import argparse
 parser = argparse.ArgumentParser()
@@ -160,7 +159,7 @@ def main(n=None):
         pairs = shuffle_and_slice(pairs, n)
     else:
         pairs = pairs_from_df(pairsfile)
-    
+            
     pair_objects = list()
     for p in pairs:
         # define pair objects
@@ -173,8 +172,8 @@ def main(n=None):
     
     average = np.mean(scores)
     print("Scores average: ", average)
-        
-    write_pairs_to_file(pairs, scores)
+    
+    write_results(pairs)
     
 if __name__ == "__main__":
     

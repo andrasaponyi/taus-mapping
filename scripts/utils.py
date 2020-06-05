@@ -50,24 +50,15 @@ def tokenize(nlp, sentence):
     
     return tokens
 
-def write_results(pairs, scores):
+def write_results(pairs):
+    """ This is a very convulated way of doing things - fix later. """
     
-    source_sentences = [t[0] for t in pairs]
-    target_sentences =[t[1] for t in pairs]
+    source_sentences = [pair.source for pair in pairs]
+    target_sentences = [pair.target for pair in pairs]
+    scores = [pair.score for pair in pairs]
     
     data_tuples = list(zip(source_sentences, target_sentences, scores))
-    df = pd.DataFrame(data_tuples, columns=["Mapped", "Gold", "SemScore"])
+    df = pd.DataFrame(data_tuples, columns=["Source", "Target", "SemScore"])
     df.to_csv("data/dataframe_with_semscores.csv")
     
-    pass
-
-def write_pairs_to_file(pairs, scores):
-        
-    with open("data/results.csv", "w") as csvfile:
-        writer = csv.writer(csvfile, delimiter=",")
-        writer.writerow(["Source", "Target", "SemScore"])
-        for pair in pairs:
-            row = [pair.source, pair.target, pair.score]
-            writer.writerow(row)
-
     pass
