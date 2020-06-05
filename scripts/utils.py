@@ -11,27 +11,34 @@ import random
 import pandas as pd
 import csv
 
-def shuffle_dict(dictionary):
+def pairs_from_df(infile):
     
-    items = list(dictionary.items())
-    random.shuffle(items)
-    shuffled = dict(items)
+    df = pd.read_csv(infile, index_col=0)
+    sources = list(df.Source)
+    targets = list(df.Target)
+    pairs = list(zip(sources, targets))
+    
+    return pairs
+
+def shuffle_data(data_tuples):
+    
+    random.shuffle(data_tuples)
+    shuffled = data_tuples
         
     return shuffled
 
-def slice_dict(dictionary, n):
+def slice_data(data_tuples, n):
     
-    items = list(dictionary.items())
-    shorter = dict(items[:n])
+    shorter = data_tuples[:n]
 
     return shorter
 
-def shuffle_and_slice(dictionary, n):
+def shuffle_and_slice(data_tuples, n):
 
-    dictionary = shuffle_dict(dictionary)
-    dictionary = slice_dict(dictionary, n)
+    data_tuples = shuffle_data(data_tuples)
+    data_tuples = slice_data(data_tuples, n)
     
-    return dictionary
+    return data_tuples
 
 def tokenize(nlp, sentence):
     

@@ -12,12 +12,11 @@ Run from main directory (taus-mapping)!
 
 import numpy as np
 from gensim.models import KeyedVectors
-import json
 import spacy
 from sklearn.metrics.pairwise import cosine_similarity
 from utils import shuffle_and_slice, tokenize
 import pandas as pd
-from utils import write_pairs_to_file
+from utils import write_pairs_to_file, pairs_from_df
 from classes import SentencePair
 import argparse
 parser = argparse.ArgumentParser()
@@ -154,18 +153,15 @@ def main(n=None):
     # Load translation matrix from file.
     tm = np.loadtxt("data/transformation_matrix.csv", delimiter=",")
     
-    # Pairs: a dictionary containing source and target sentence pairs.
-    pairs = "data/sample_pairs.json"
-    # pairs = "data/pairs.json"
-    with open(pairs, "r") as json_file:
-        if n:
-            # Shorten data to n pairs to make testing faster.
-            pairs = shuffle_and_slice(json.load(json_file), n)
-        else:
-            pairs = json.load(json_file)
-     
-    # # Convert to list of tuples to keep duplicates keys.
-    pairs = [(s, t) for s, t in pairs.items()]
+    # Pairs: a CSV file containing source and target sentence pairs.
+    # pairsfile = "data/pairs.csv"
+    pairsfile = "data/sample_pairs.csv"
+    if n:
+        # Shorten data to n pairs to make testing faster.
+        pairs = pairs_from_df(pairsfile)
+        pairs = shuffle_and_slice(pairs, n)
+    else:
+        pairs = pairs_from_df(pairsfile)
     
     pair_objects = list()
     for p in pairs:

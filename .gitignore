@@ -6,7 +6,7 @@ vectors/taus_en_300.bin
 vectors/taus_fr_300.bin
 
 # Ignore data files 
-data/pairs.json
+data/pairs.csv
 data/results.csv
 data/transformation_matrix.csv
 data/seed_dictionary_refined.json
