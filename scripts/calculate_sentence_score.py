@@ -145,8 +145,6 @@ def main(n=None):
     # Load word2vec models.
     model_source = "vectors/source_vectors.bin"
     model_target = "vectors/target_vectors.bin"
-    # model_source = "vectors/taus_en_300.bin"
-    # model_target = "vectors/taus_fr_300.bin"
     model_source = KeyedVectors.load_word2vec_format(model_source, binary=True)
     model_target = KeyedVectors.load_word2vec_format(model_target, binary=True)
     

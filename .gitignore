@@ -7,6 +7,6 @@ vectors/taus_fr_300.bin
 
 # Ignore data files 
 data/pairs.csv
-data/results.csv
+data/dataframe_with_semscores.csv
 data/transformation_matrix.csv
 data/seed_dictionary_refined.json

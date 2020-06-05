@@ -57,7 +57,7 @@ def write_results(pairs, scores):
     
     data_tuples = list(zip(source_sentences, target_sentences, scores))
     df = pd.DataFrame(data_tuples, columns=["Mapped", "Gold", "SemScore"])
-    df.to_csv("data/results.csv")
+    df.to_csv("data/dataframe_with_semscores.csv")
     
     pass
 
