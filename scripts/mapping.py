@@ -72,13 +72,14 @@ def main(method):
     # load models trained using gensim implementation of word2vec
     model_source = "vectors/source_vectors.bin"
     model_target = "vectors/target_vectors.bin"
-    # model_source = "vectors/taus_en_300.bin"
-    # model_target = "vectors/taus_fr_300.bin"
+    # model_source = "word2vec/taus_en_300.bin"
+    # model_target = "word2vec/taus_fr_300.bin"
     model_source = KeyedVectors.load_word2vec_format(model_source, binary=True)
     model_target = KeyedVectors.load_word2vec_format(model_target, binary=True)
 
     # list of word pairs to train translation matrix as json
     seed_dictionary_file = "data/seed_dictionary.json"
+    # seed_dictionary_file = "data/seed_dictionary_refined.json"
     with open(seed_dictionary_file, "r") as json_file:
         seed_dictionary = json.load(json_file)
         
