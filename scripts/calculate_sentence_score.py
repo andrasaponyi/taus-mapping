@@ -144,8 +144,6 @@ def main(n=None):
     # Load word2vec models.
     model_source = "vectors/source_vectors.bin"
     model_target = "vectors/target_vectors.bin"
-    # model_source = "word2vec/taus_en_300.bin"
-    # model_target = "word2vec/taus_fr_300.bin"
     model_source = KeyedVectors.load_word2vec_format(model_source, binary=True)
     model_target = KeyedVectors.load_word2vec_format(model_target, binary=True)
     
@@ -153,7 +151,6 @@ def main(n=None):
     tm = np.loadtxt("data/transformation_matrix.csv", delimiter=",")
     
     # Pairs: a CSV file containing source and target sentence pairs.
-    # pairsfile = "data/pairs.csv"
     pairsfile = "data/sample_pairs.csv"
     if n:
         # Shorten data to n pairs to make testing faster.

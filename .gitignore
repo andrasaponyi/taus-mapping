@@ -5,8 +5,10 @@ scripts/__pycache__
 vectors/taus_en_300.bin
 vectors/taus_fr_300.bin
 
-# Ignore data files 
+# Ignore data files and folders
 data/pairs.csv
 data/dataframe_with_semscores.csv
 data/transformation_matrix.csv
 data/seed_dictionary_refined.json
+data/mapping-pairs
+data/mapping-seeds
